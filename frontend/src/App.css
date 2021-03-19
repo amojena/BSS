@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-image: url("./img/bg3.jpg");
+  background-image: url("./img/login.jpg");
   background-size: cover;
   height: 100vh;
 }
@@ -28,8 +28,24 @@
   align-items: center;
 }
 
+.half-screen-col{
+  height: 100%;
+  overflow: auto;
+}
+
+.box{
+ 
+  width: 40%;
+  height: 100vh;
+  overflow: auto;
+}
+
 .custom-top-pad{
-  padding-top: 20%;
+  padding-top: 35%;
+}
+
+.subtitle-top-pad{
+  padding: 20px;
 }
 
 .App-logo {
