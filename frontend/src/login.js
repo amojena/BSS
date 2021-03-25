@@ -15,7 +15,11 @@ const firebaseConfig = {
     measurementId: "G-518NZGXK2W"
   };
   
-  firebase.initializeApp(firebaseConfig);
+  try{
+    firebase.initializeApp(firebaseConfig);
+  } catch(err){
+    firebase.app(firebaseConfig);
+  }
   
   
   class SignInScreen extends React.Component{
@@ -23,6 +27,7 @@ const firebaseConfig = {
   
     uiConfig = {
       signInFlow: 'popup',
+      signInSuccessUrl: '/home',
   
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID
@@ -49,12 +54,9 @@ const firebaseConfig = {
           </div>
         );
       }
-
-      else {
-          <div>
-              <h1> Welcome</h1>
-          </div>
-      }
+          return (
+            <Home/>
+          );
     }
   }
 

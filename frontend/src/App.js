@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import SignInScreen from './login';
 import Home from './Home';
 
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact component={App}/>
+          {/* <Route path="/" component={App}/> */}
           <Route path="/login" component={SignInScreen}/>
           <Route path="/home" component={Home}/>
         </Switch>
@@ -31,10 +31,14 @@ function App() {
           <div class="custom-top-pad">
             <div class="columns is one-third">
                 <div class="column">
-                  <button class="button is-success is-light">Log In</button>
+                  <Link to="/login">
+                    <button class="button is-success is-light">Log In</button>
+                  </Link>
                 </div>
                 <div class="column">
-                  <button class="button is-link is-light">Sign Up</button>
+                  <Link to="/login">
+                    <button class="button is-link is-light">Sign Up</button>
+                  </Link>
                 </div>
               </div>
 
@@ -43,9 +47,14 @@ function App() {
 
       </div>
 
+  </Router>
 
-    </Router>
   );
 }
 
 export default App;
+
+// window.location.href = "/login"
+
+// onclick for button
+// handler function and put line 53 inside
