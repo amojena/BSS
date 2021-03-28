@@ -3,6 +3,9 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import React from 'react';
 import Home from './Home.js';
+import App from './App.js';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -54,9 +57,26 @@ const firebaseConfig = {
           </div>
         );
       }
-          return (
-            <Home/>
-          );
+
+      return (
+        <div>
+        <div class="columns is one-third">
+          <div class="column">
+          <h3>Welcome, {firebase.auth().currentUser.displayName}!</h3>
+          </div>
+          <div class="column">
+        <Link to="/app">
+          <button class="button is-danger is-light" onClick={() =>firebase.auth().signOut()}>Sign Out</button>
+        </Link>
+          </div>
+          <div class="column">
+          <h3>{firebase.auth().currentUser.email}</h3>
+            </div>
+        </div>
+        <Home/>
+          
+        </div>
+      );
     }
   }
 

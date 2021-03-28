@@ -1,4 +1,6 @@
 import './App.css';
+import SignInScreen from './login'
+
 
 function Home() {
   return (
@@ -44,9 +46,11 @@ function Home() {
             </div>
         
             <button class="button is-warning">+ New Trip</button>
+            <button class="button is-warning" onClick="{() => SignInScreen.SignOut()}"> Sign Out</button>
         </div>
     </div>
   );
 }
+
 
 export default Home;
