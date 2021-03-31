@@ -58,7 +58,18 @@ provider:
 #    - exclude-me.js
 #    - exclude-me-dir/**
 
+plugins:
+  - serverless-offline
+
 functions:
+  requests:
+    handler: api.getTravelReqs
+    events:
+      - http:
+          path: /requests
+          method: GET
+          cors: true
+
   whoami:
     handler: handler.hello
     events:
