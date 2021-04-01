@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Home from './Home'
 import reportWebVitals from './reportWebVitals';
+import SignInScreen from './Landing';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SignInScreen />
   </React.StrictMode>,
   document.getElementById('root')
 );
