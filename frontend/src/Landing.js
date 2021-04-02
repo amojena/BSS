@@ -60,20 +60,20 @@ const firebaseConfig = {
       }
 
       return (
-                <div>
-                    <div class="columns is one-third">
-                        <div class="column">
-                            <h3>Welcome, {firebase.auth().currentUser.displayName}!</h3>
-                            <h3>{firebase.auth().currentUser.email}</h3>
-                        </div>
+                // <div>
+                //     <div class="columns is one-third">
+                //         <div class="column">
+                //             <h3>Welcome, {firebase.auth().currentUser.displayName}!</h3>
+                //             <h3>{firebase.auth().currentUser.email}</h3>
+                //         </div>
 
-                        <div class="column"></div>
-                        <div class="column">
-                            <button class="button is-danger is-light" onClick={() =>firebase.auth().signOut()}>Sign Out</button>
-                        </div>
-                    </div>
+                //         <div class="column"></div>
+                //         <div class="column">
+                //             <button class="button is-danger is-light" onClick={() =>firebase.auth().signOut()}>Sign Out</button>
+                //         </div>
+                //     </div>
                     <Home/>
-                </div>
+                // </div>
       );
     }
   }

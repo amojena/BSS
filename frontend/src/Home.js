@@ -1,6 +1,23 @@
 import React from 'react';
 import './App.css';
 import testImage from './img/bg5.jpg'
+import firebase from 'firebase';
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDZEl07mkjMsShSgrG4tCGiYypL4FFMS50",
+//     authDomain: "bss-ll.firebaseapp.com",
+//     projectId: "bss-ll",
+//     storageBucket: "bss-ll.appspot.com",
+//     messagingSenderId: "698544285017",
+//     appId: "1:698544285017:web:4080953269d808db4d9848",
+//     measurementId: "G-518NZGXK2W"
+//   };
+  
+//   try{
+//     firebase.initializeApp(firebaseConfig);
+//   } catch(err){
+//     firebase.app(firebaseConfig);
+//   }
 
 class Home extends React.Component {
 
@@ -9,16 +26,35 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        const response = await fetch("http://localhost:4000/dev/requests")
+        const idToken = await firebase.auth().currentUser?.getIdToken()
+        const response = await fetch('http://localhost:4000/dev/requests', {
+      headers: {
+        'Authorization': idToken
+      }
+    })
+
+    if (response.status === 401) {return console.log("Unauthorized")}
+
+
         const reqs = await response.json()
         this.setState({requests: reqs})
         console.log(reqs)
+        console.log(firebase.auth().currentUser.displayName)
     }
 
     render() {
       return (
         <div className="Home">
     
+            <div class="columns">
+                    <div class="column">
+                        <strong>Welcome back, {firebase.auth().currentUser.displayName}!</strong>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column">
+                        <strong>{firebase.auth().currentUser.email}</strong></div>
+            </div>
+            
             <div class="box">
                 <div class="columns">
                     <div class="column">
@@ -69,10 +105,11 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
+                <button class="button is-warning">+ New Trip</button>
+                <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
             </div>
                      
             
-                <button class="button is-warning">+ New Trip</button>
                
             </div>
       );
