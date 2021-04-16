@@ -35,11 +35,9 @@ class Home extends React.Component {
 
     if (response.status === 401) {return console.log("Unauthorized")}
 
-
         const reqs = await response.json()
         this.setState({requests: reqs})
         console.log(reqs)
-        console.log(firebase.auth().currentUser.displayName)
     }
 
     render() {
