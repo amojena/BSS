@@ -69,6 +69,10 @@ functions:
           path: /requests
           method: GET
           cors: true
+      - http:
+          path: /requests
+          method: ANY
+          cors: true
 
   whoami:
     handler: handler.hello

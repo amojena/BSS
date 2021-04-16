@@ -231,7 +231,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1617333023525-2021-04-02T03:10:23.525Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618551802436-2021-04-16T05:43:22.436Z/backend.zip"
         },
         "Handler": "s_requests.handler",
         "Runtime": "nodejs12.x",
@@ -256,7 +256,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1617333023525-2021-04-02T03:10:23.525Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618551802436-2021-04-16T05:43:22.436Z/backend.zip"
         },
         "Handler": "s_whoami.handler",
         "Runtime": "nodejs12.x",
@@ -281,7 +281,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1617333023525-2021-04-02T03:10:23.525Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618551802436-2021-04-16T05:43:22.436Z/backend.zip"
         },
         "Handler": "s_hello.handler",
         "Runtime": "nodejs12.x",
@@ -299,34 +299,34 @@
         "HelloLogGroup"
       ]
     },
-    "RequestsLambdaVersion59pC6ounnaJNXPr4CLmKCE1fBeuo0Uxm0wPsaOAtYXM": {
+    "RequestsLambdaVersionP51evxdGYoU73Qqi6SUE0GxF8R9OjgWok3RWiNxp8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RequestsLambdaFunction"
         },
-        "CodeSha256": "yqUgIAGnrPb/q3GH6ZVYJRswoslmaybWknOsstC5B3M="
+        "CodeSha256": "EKJOdmHtDvDaZgJynk1qdybzzYRub5L1N2qsSoXV3jA="
       }
     },
-    "WhoamiLambdaVersionBBu1JNsxigvHkEmXppXhkkkx4penkFcVSlGWJEnHDI": {
+    "WhoamiLambdaVersionoQRF1lxNMrHhNX0TgfNRbqVA2x2zC9asJGy0tOjrM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WhoamiLambdaFunction"
         },
-        "CodeSha256": "yqUgIAGnrPb/q3GH6ZVYJRswoslmaybWknOsstC5B3M="
+        "CodeSha256": "EKJOdmHtDvDaZgJynk1qdybzzYRub5L1N2qsSoXV3jA="
       }
     },
-    "HelloLambdaVersionOs2eE8gho8vWPoPD7GGQu2iMLzRWIywIRshNUQUSxE": {
+    "HelloLambdaVersionVntclwD50XTdCTsZtl7N2spV6MpdmvNLKItA5nTE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "yqUgIAGnrPb/q3GH6ZVYJRswoslmaybWknOsstC5B3M="
+        "CodeSha256": "EKJOdmHtDvDaZgJynk1qdybzzYRub5L1N2qsSoXV3jA="
       }
     },
     "ApiGatewayRestApi": {
@@ -400,7 +400,7 @@
               "ResponseParameters": {
                 "method.response.header.Access-Control-Allow-Origin": "'*'",
                 "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT,GET'"
               },
               "ResponseTemplates": {
                 "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".+\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
@@ -552,6 +552,49 @@
         "MethodResponses": []
       }
     },
+    "ApiGatewayMethodRequestsAny": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "ANY",
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "ApiGatewayResourceRequests"
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        },
+        "ApiKeyRequired": false,
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:",
+                {
+                  "Ref": "AWS::Region"
+                },
+                ":lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "RequestsLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        },
+        "MethodResponses": []
+      }
+    },
     "ApiGatewayMethodAny": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
@@ -641,7 +684,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1617333019804": {
+    "ApiGatewayDeployment1618551798029": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -654,6 +697,7 @@
         "ApiGatewayMethodOptions",
         "ApiGatewayMethodAnyVarOptions",
         "ApiGatewayMethodRequestsGet",
+        "ApiGatewayMethodRequestsAny",
         "ApiGatewayMethodAny",
         "ApiGatewayMethodAnyVarAny"
       ]
@@ -841,9 +885,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1617333023525-2021-04-02T03:10:23.525Z/custom-resources.zip"
+          "S3Key": "serverless/backend/dev/1618551802436-2021-04-16T05:43:22.436Z/custom-resources.zip"
         },
-        "FunctionName": "backend-undefined-custom-resource-apigw-cw-role",
+        "FunctionName": "backend-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
         "MemorySize": 1024,
         "Runtime": "nodejs12.x",
@@ -917,19 +961,19 @@
     "RequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RequestsLambdaVersion59pC6ounnaJNXPr4CLmKCE1fBeuo0Uxm0wPsaOAtYXM"
+        "Ref": "RequestsLambdaVersionP51evxdGYoU73Qqi6SUE0GxF8R9OjgWok3RWiNxp8"
       }
     },
     "WhoamiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WhoamiLambdaVersionBBu1JNsxigvHkEmXppXhkkkx4penkFcVSlGWJEnHDI"
+        "Ref": "WhoamiLambdaVersionoQRF1lxNMrHhNX0TgfNRbqVA2x2zC9asJGy0tOjrM"
       }
     },
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionOs2eE8gho8vWPoPD7GGQu2iMLzRWIywIRshNUQUSxE"
+        "Ref": "HelloLambdaVersionVntclwD50XTdCTsZtl7N2spV6MpdmvNLKItA5nTE"
       }
     },
     "ServiceEndpoint": {

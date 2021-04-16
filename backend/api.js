@@ -1,10 +1,23 @@
 'use strict';
 
+const headers = {
+  'Access-Control-Allow-Origin': '*'
+}
+
+const firebaseTokenVerifier = require('../node_modules/firebase-token-verifier')
+const projectId = "bss-ll"
 
 module.exports.getTravelReqs = async (event) => {
   
-  const firebaseTokenVerifier = require('../node_modules/firebase-token-verifier')
-  const projectId = "bss-ll"
+
+  // check first if its an OPTIONS request
+  if (event.httpMethod === 'OPTIONS') {
+    // return the expected status and CORS headers
+    return {
+        statusCode: 200,
+        headers
+    }
+}
 
   if (event.httpMethod === "GET" && event.path === "/requests") {
 
@@ -29,6 +42,7 @@ module.exports.getTravelReqs = async (event) => {
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({ name: 'Antonio Mojena', location: "Puerto Rico", status: "Pending" })
     }
 
