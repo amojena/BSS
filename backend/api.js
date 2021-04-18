@@ -4,7 +4,7 @@ const headers = {
   'Access-Control-Allow-Origin': '*'
 }
 
-const firebaseTokenVerifier = require('../node_modules/firebase-token-verifier')
+const firebaseTokenVerifier = require('firebase-token-verifier')
 const projectId = "bss-ll"
 
 module.exports.getTravelReqs = async (event) => {

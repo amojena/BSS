@@ -58,6 +58,9 @@ provider:
 #    - exclude-me.js
 #    - exclude-me-dir/**
 
+package:
+  exclude:
+    - node_modules/serverless-enterprise-plugin
 plugins:
   - serverless-offline
 
