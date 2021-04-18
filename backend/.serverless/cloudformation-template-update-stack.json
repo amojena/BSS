@@ -231,7 +231,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760295808-2021-04-18T15:38:15.808Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
         },
         "Handler": "s_requests.handler",
         "Runtime": "nodejs12.x",
@@ -256,7 +256,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760295808-2021-04-18T15:38:15.808Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
         },
         "Handler": "s_whoami.handler",
         "Runtime": "nodejs12.x",
@@ -281,7 +281,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760295808-2021-04-18T15:38:15.808Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
         },
         "Handler": "s_hello.handler",
         "Runtime": "nodejs12.x",
@@ -299,34 +299,34 @@
         "HelloLogGroup"
       ]
     },
-    "RequestsLambdaVersionBF7nYOytz33lxuzEGCO5WRqXqjhFOBVnJUzvMzZk": {
+    "RequestsLambdaVersionqPiUjnZh7nvNYa3mLDmLhzqQtKjOfP9Ff1yHMkwdzE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RequestsLambdaFunction"
         },
-        "CodeSha256": "2RR0Gq93HvtA6nUu/eRwHnZvV78WoUVK13eKo92aikg="
+        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
       }
     },
-    "WhoamiLambdaVersionUVh83f7bwwt8ZVSIpdUjIdBnrl84kR4gQz4FrcTpW6I": {
+    "WhoamiLambdaVersionDhM8KsKDvXkw3imGhhDcxt5F5YWj5lYAZ2nE6h8lm6c": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WhoamiLambdaFunction"
         },
-        "CodeSha256": "2RR0Gq93HvtA6nUu/eRwHnZvV78WoUVK13eKo92aikg="
+        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
       }
     },
-    "HelloLambdaVersionzyJ6nYVDiQCDrnuGLK59zQjf9FrX19QlwtJIbxMfI": {
+    "HelloLambdaVersionxv0dYd2EUIjl2JOZFNnAbjy3OMLmQ8x07krzuY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "2RR0Gq93HvtA6nUu/eRwHnZvV78WoUVK13eKo92aikg="
+        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
       }
     },
     "ApiGatewayRestApi": {
@@ -684,7 +684,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1618760265651": {
+    "ApiGatewayDeployment1618760616805": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -885,7 +885,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760295808-2021-04-18T15:38:15.808Z/custom-resources.zip"
+          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/custom-resources.zip"
         },
         "FunctionName": "backend-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -961,19 +961,19 @@
     "RequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RequestsLambdaVersionBF7nYOytz33lxuzEGCO5WRqXqjhFOBVnJUzvMzZk"
+        "Ref": "RequestsLambdaVersionqPiUjnZh7nvNYa3mLDmLhzqQtKjOfP9Ff1yHMkwdzE"
       }
     },
     "WhoamiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WhoamiLambdaVersionUVh83f7bwwt8ZVSIpdUjIdBnrl84kR4gQz4FrcTpW6I"
+        "Ref": "WhoamiLambdaVersionDhM8KsKDvXkw3imGhhDcxt5F5YWj5lYAZ2nE6h8lm6c"
       }
     },
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionzyJ6nYVDiQCDrnuGLK59zQjf9FrX19QlwtJIbxMfI"
+        "Ref": "HelloLambdaVersionxv0dYd2EUIjl2JOZFNnAbjy3OMLmQ8x07krzuY"
       }
     },
     "ServiceEndpoint": {

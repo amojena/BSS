@@ -27,12 +27,12 @@ class Home extends React.Component {
 
     async componentDidMount() {
         const idToken = await firebase.auth().currentUser?.getIdToken()
-        let backendURL = 'http://localhost:4000/dev/requests'
+        let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
         console.log(window.location.href)
 
         if (window.location.href.includes('localhost')) {
-            backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
+            backendURL = 'http://localhost:4000/dev/requests'
         }
 
         const response = await fetch(backendURL, {
