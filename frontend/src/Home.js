@@ -27,7 +27,13 @@ class Home extends React.Component {
 
     async componentDidMount() {
         const idToken = await firebase.auth().currentUser?.getIdToken()
-        const response = await fetch('http://localhost:4000/dev/requests', {
+        let backendURL = 'http://localhost:4000/dev/requests'
+
+        if (window.location.href.includes('localhost')) {
+            backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
+        }
+
+        const response = await fetch(backendURL, {
       headers: {
         'Authorization': idToken
       }
