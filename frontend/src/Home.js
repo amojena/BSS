@@ -35,6 +35,8 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
+        console.log(backendURL)
+
         const response = await fetch(backendURL, {
       headers: {
         'Authorization': idToken
