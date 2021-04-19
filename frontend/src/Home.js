@@ -3,6 +3,8 @@ import './App.css';
 import testImage from './img/bg5.jpg'
 import firebase from 'firebase';
 
+import {getTrips, addTrip, deleteTrip} from '../../backend/api'
+
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDZEl07mkjMsShSgrG4tCGiYypL4FFMS50",
 //     authDomain: "bss-ll.firebaseapp.com",
