@@ -115,7 +115,7 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <button class="button is-warning">+ New Trip</button>
+                <button class="button is-warning" onClick={() => addTrip("Puerto Rico", "Antonio")}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
             </div>
                      
