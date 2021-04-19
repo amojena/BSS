@@ -3,6 +3,8 @@ import './App.css';
 import testImage from './img/bg5.jpg'
 import firebase from 'firebase';
 
+import {getTrips, addTrip, deleteTrip} from '../../backend/api'
+
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDZEl07mkjMsShSgrG4tCGiYypL4FFMS50",
 //     authDomain: "bss-ll.firebaseapp.com",
@@ -113,7 +115,7 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <button class="button is-warning">+ New Trip</button>
+                <button class="button is-warning" onClick={() => addTrip("Puerto Rico", "Antonio")}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
             </div>
                      
