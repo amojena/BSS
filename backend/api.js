@@ -14,8 +14,7 @@ module.exports.getTravelReqs = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     // return the expected status and CORS headers
     return {
-        statusCode: 200,
-        headers
+        statusCode: 200, headers
     }
 }
 
@@ -26,7 +25,7 @@ module.exports.getTravelReqs = async (event) => {
     // no authorization token provided, return error code
     if (!token) {
       console.log("No token")
-      return {statusCode: 401}
+      return {statusCode: 401, headers}
     }
 
     //validate token from request
@@ -35,7 +34,7 @@ module.exports.getTravelReqs = async (event) => {
     } catch(err) {
       // invalid token
       console.error(err)
-      return {statusCode: 401}
+      return {statusCode: 401, headers}
     }
     
 
