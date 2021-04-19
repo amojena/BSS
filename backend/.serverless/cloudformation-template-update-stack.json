@@ -231,7 +231,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618793818185-2021-04-19T00:56:58.185Z/backend.zip"
         },
         "Handler": "s_requests.handler",
         "Runtime": "nodejs12.x",
@@ -256,7 +256,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618793818185-2021-04-19T00:56:58.185Z/backend.zip"
         },
         "Handler": "s_whoami.handler",
         "Runtime": "nodejs12.x",
@@ -281,7 +281,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618793818185-2021-04-19T00:56:58.185Z/backend.zip"
         },
         "Handler": "s_hello.handler",
         "Runtime": "nodejs12.x",
@@ -299,34 +299,34 @@
         "HelloLogGroup"
       ]
     },
-    "RequestsLambdaVersionqPiUjnZh7nvNYa3mLDmLhzqQtKjOfP9Ff1yHMkwdzE": {
+    "RequestsLambdaVersiongoOsxDBvb5ijpgvWua8zpu5i3JxQytjTE0O1iTL5hQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RequestsLambdaFunction"
         },
-        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
+        "CodeSha256": "ZSleR6W8w27ESG5IPKCKgVOFOEeNiKPTqQ1+JPU+ULs="
       }
     },
-    "WhoamiLambdaVersionDhM8KsKDvXkw3imGhhDcxt5F5YWj5lYAZ2nE6h8lm6c": {
+    "WhoamiLambdaVersionQrnYUgpWWeu7avVmVvCePdjUPUkgO29FkDImikGELpU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WhoamiLambdaFunction"
         },
-        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
+        "CodeSha256": "ZSleR6W8w27ESG5IPKCKgVOFOEeNiKPTqQ1+JPU+ULs="
       }
     },
-    "HelloLambdaVersionxv0dYd2EUIjl2JOZFNnAbjy3OMLmQ8x07krzuY": {
+    "HelloLambdaVersionOuWjVaJTroa16Rwv5KjvzImsEgqEbP6BXAT4VqJpYQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "yOpVTUhceEsYBZy8ML/Y5HtPMtoKhOxdb1w0MO/OUo0="
+        "CodeSha256": "ZSleR6W8w27ESG5IPKCKgVOFOEeNiKPTqQ1+JPU+ULs="
       }
     },
     "ApiGatewayRestApi": {
@@ -684,7 +684,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1618760616805": {
+    "ApiGatewayDeployment1618793743663": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -885,7 +885,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618760644159-2021-04-18T15:44:04.159Z/custom-resources.zip"
+          "S3Key": "serverless/backend/dev/1618793818185-2021-04-19T00:56:58.185Z/custom-resources.zip"
         },
         "FunctionName": "backend-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -961,19 +961,19 @@
     "RequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RequestsLambdaVersionqPiUjnZh7nvNYa3mLDmLhzqQtKjOfP9Ff1yHMkwdzE"
+        "Ref": "RequestsLambdaVersiongoOsxDBvb5ijpgvWua8zpu5i3JxQytjTE0O1iTL5hQ"
       }
     },
     "WhoamiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WhoamiLambdaVersionDhM8KsKDvXkw3imGhhDcxt5F5YWj5lYAZ2nE6h8lm6c"
+        "Ref": "WhoamiLambdaVersionQrnYUgpWWeu7avVmVvCePdjUPUkgO29FkDImikGELpU"
       }
     },
     "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HelloLambdaVersionxv0dYd2EUIjl2JOZFNnAbjy3OMLmQ8x07krzuY"
+        "Ref": "HelloLambdaVersionOuWjVaJTroa16Rwv5KjvzImsEgqEbP6BXAT4VqJpYQ"
       }
     },
     "ServiceEndpoint": {
