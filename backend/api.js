@@ -116,7 +116,7 @@ const addTrip = (loc, nam) => {
       TableName: "LL-tripReqs",
       Item: {
         location: loc,
-        name = nam,
+        name: nam,
       },
     }
   ).promise();
@@ -128,7 +128,7 @@ const deleteTrip = (loc, nam) => {
       TableName: "LL-tripReqs",
       Key: {
         location: loc,
-        name = nam,
+        name: nam,
       },
     }
   ).promise();
