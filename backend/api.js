@@ -23,39 +23,39 @@ const checkUser = async (event) => {
     return decodedUser
 }
 
-// const getTrips = (_name) => {
-//   return docClient.query(
-//     {
-//       TableName: "LL-tripReqs",
-//       KeyConditionExpression: "name = :name",
-//       ExpressionAttributeValues: { "name": _name}
-//     }
-//   ).promise().then((response) => response.Items);
-// }
+const getTrips = (_name) => {
+  return docClient.query(
+    {
+      TableName: "LL-tripReqs",
+      KeyConditionExpression: "name = :name",
+      ExpressionAttributeValues: { "name": _name}
+    }
+  ).promise().then((response) => response.Items);
+}
 
-// const addTrip = (_location, _name) => {
-//   return docClient.put(
-//     {
-//       TableName: "LL-tripReqs",
-//       Item: {
-//         location: _location,
-//         name = _name
-//       }
-//     }
-//   ).promise();
-// };
+const addTrip = (_location, _name) => {
+  return docClient.put(
+    {
+      TableName: "LL-tripReqs",
+      Item: {
+        location: _location,
+        name = _name
+      }
+    }
+  ).promise();
+};
 
-// const deleteTrip = (_location, _name) => {
-//   return docClient.delete(
-//     {
-//       TableName: "LL-tripReqs",
-//       Key: {
-//         location: _location,
-//         name = _name
-//       }
-//     }
-//   ).promise();
-// };
+const deleteTrip = (_location, _name) => {
+  return docClient.delete(
+    {
+      TableName: "LL-tripReqs",
+      Key: {
+        location: _location,
+        name = _name
+      }
+    }
+  ).promise();
+};
 
 module.exports.getTravelReqs = async (event) => {
   
@@ -97,39 +97,39 @@ module.exports.getTravelReqs = async (event) => {
 
   }
 
-  // if (event.path === '/requests' && event.httpMethod === 'POST') {
-  //   // check if the user is authenticated
-	// let user;
-  //   try {
-  //     user = await checkUser(event)
-  //   } catch (err) {
-  //     return {
-  //       statusCode: 401,
-  //       headers,
-  //       body: JSON.stringify({message: err.message})
-  //     }
-  //   }
+  if (event.path === '/requests' && event.httpMethod === 'POST') {
+    // check if the user is authenticated
+	let user;
+    try {
+      user = await checkUser(event)
+    } catch (err) {
+      return {
+        statusCode: 401,
+        headers,
+        body: JSON.stringify({message: err.message})
+      }
+    }
 
-  //   // check that the request contains a body
-  //   if (!event.body) {
-  //     return {
-  //       statusCode: 400,
-  //       headers,
-  //       body: JSON.stringify({message: 'Missing body'})
-  //     }
-  //   }
+    // check that the request contains a body
+    if (!event.body) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({message: 'Missing body'})
+      }
+    }
 
-  //   // parse the request body as JSON
-  //   const requestBody = JSON.parse(event.body);
+    // parse the request body as JSON
+    const requestBody = JSON.parse(event.body);
 
-  //   // TODO write that data to your dynamodb table
+    // TODO write that data to your dynamodb table
 		
-	// // send back a successful response
-	// return {
-	//   statusCode: 201,
-  //     headers
-	// }
-  // }
+	// send back a successful response
+	return {
+	  statusCode: 201,
+      headers
+	}
+  }
 
 };
 

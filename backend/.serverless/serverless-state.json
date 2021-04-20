@@ -97,12 +97,6 @@
               "LogGroupName": "/aws/lambda/backend-dev-whoami"
             }
           },
-          "HelloLogGroup": {
-            "Type": "AWS::Logs::LogGroup",
-            "Properties": {
-              "LogGroupName": "/aws/lambda/backend-dev-hello"
-            }
-          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -223,12 +217,6 @@
                               "WhoamiLogGroup",
                               "Arn"
                             ]
-                          },
-                          {
-                            "Fn::GetAtt": [
-                              "HelloLogGroup",
-                              "Arn"
-                            ]
                           }
                         ]
                       }
@@ -245,7 +233,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z/backend.zip"
+                "S3Key": "serverless/backend/dev/1618935454969-2021-04-20T16:17:34.969Z/backend.zip"
               },
               "Handler": "s_requests.handler",
               "Runtime": "nodejs12.x",
@@ -270,7 +258,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z/backend.zip"
+                "S3Key": "serverless/backend/dev/1618935454969-2021-04-20T16:17:34.969Z/backend.zip"
               },
               "Handler": "s_whoami.handler",
               "Runtime": "nodejs12.x",
@@ -288,59 +276,24 @@
               "WhoamiLogGroup"
             ]
           },
-          "HelloLambdaFunction": {
-            "Type": "AWS::Lambda::Function",
-            "Properties": {
-              "Code": {
-                "S3Bucket": {
-                  "Ref": "ServerlessDeploymentBucket"
-                },
-                "S3Key": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z/backend.zip"
-              },
-              "Handler": "s_hello.handler",
-              "Runtime": "nodejs12.x",
-              "FunctionName": "backend-dev-hello",
-              "MemorySize": 1024,
-              "Timeout": 6,
-              "Role": {
-                "Fn::GetAtt": [
-                  "IamRoleLambdaExecution",
-                  "Arn"
-                ]
-              }
-            },
-            "DependsOn": [
-              "HelloLogGroup"
-            ]
-          },
-          "RequestsLambdaVersionfgN8PwJu8ol2wuKexPFU8ffuxPJkFDdxxol1AJRM": {
+          "RequestsLambdaVersionz2hh30t7Lz5ED3aUrsmyimgtU5y75kx7LFLFq4o8Q4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "RequestsLambdaFunction"
               },
-              "CodeSha256": "S6vRQT2sHm4Wd/Yv/OaRao4T+RMJfnlUfi5tYBXmy30="
+              "CodeSha256": "GEZ70VSsx1oRaErjbpy2zfdEiHWlOKqpA/v6Fwx/2pU="
             }
           },
-          "WhoamiLambdaVersionHpw2mOIZS2fHsqv2D1xhAkY6K9Vs6E6RVUkgNPuPGE": {
+          "WhoamiLambdaVersiondFEI0PJS7dXCiXgqreDdbljNoBxjHGhvpq64lM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WhoamiLambdaFunction"
               },
-              "CodeSha256": "S6vRQT2sHm4Wd/Yv/OaRao4T+RMJfnlUfi5tYBXmy30="
-            }
-          },
-          "HelloLambdaVersionqqTejJNWBj06fOiwSRd25LAkosoXfnhhER3mGuY3NA": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "HelloLambdaFunction"
-              },
-              "CodeSha256": "S6vRQT2sHm4Wd/Yv/OaRao4T+RMJfnlUfi5tYBXmy30="
+              "CodeSha256": "GEZ70VSsx1oRaErjbpy2zfdEiHWlOKqpA/v6Fwx/2pU="
             }
           },
           "ApiGatewayRestApi": {
@@ -698,7 +651,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1618803591116": {
+          "ApiGatewayDeployment1618935428570": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -899,7 +852,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z/custom-resources.zip"
+                "S3Key": "serverless/backend/dev/1618935454969-2021-04-20T16:17:34.969Z/custom-resources.zip"
               },
               "FunctionName": "backend-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -937,16 +890,6 @@
               }
             }
           },
-          "CloudWatchLogsSubscriptionFilterHelloLogGroup": {
-            "Type": "AWS::Logs::SubscriptionFilter",
-            "Properties": {
-              "DestinationArn": "arn:aws:logs:us-east-1:802587217904:destination:7d91c867-78a6-4d30-8757-9203cf4c5245#bkcYvMnpdvz2sJsjQy#backend#dev",
-              "FilterPattern": "?\"REPORT RequestId: \" ?\"SERVERLESS_ENTERPRISE\"",
-              "LogGroupName": {
-                "Ref": "HelloLogGroup"
-              }
-            }
-          },
           "CloudWatchLogsSubscriptionFilterApiGatewayLogGroup": {
             "Type": "AWS::Logs::SubscriptionFilter",
             "Properties": {
@@ -975,19 +918,13 @@
           "RequestsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "RequestsLambdaVersionfgN8PwJu8ol2wuKexPFU8ffuxPJkFDdxxol1AJRM"
+              "Ref": "RequestsLambdaVersionz2hh30t7Lz5ED3aUrsmyimgtU5y75kx7LFLFq4o8Q4"
             }
           },
           "WhoamiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WhoamiLambdaVersionHpw2mOIZS2fHsqv2D1xhAkY6K9Vs6E6RVUkgNPuPGE"
-            }
-          },
-          "HelloLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "HelloLambdaVersionqqTejJNWBj06fOiwSRd25LAkosoXfnhhER3mGuY3NA"
+              "Ref": "WhoamiLambdaVersiondFEI0PJS7dXCiXgqreDdbljNoBxjHGhvpq64lM"
             }
           },
           "ServiceEndpoint": {
@@ -1171,7 +1108,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "RequestsLambdaVersionfgN8PwJu8ol2wuKexPFU8ffuxPJkFDdxxol1AJRM"
+        "versionLogicalId": "RequestsLambdaVersionz2hh30t7Lz5ED3aUrsmyimgtU5y75kx7LFLFq4o8Q4"
       },
       "whoami": {
         "handler": "s_whoami.handler",
@@ -1235,18 +1172,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "WhoamiLambdaVersionHpw2mOIZS2fHsqv2D1xhAkY6K9Vs6E6RVUkgNPuPGE"
-      },
-      "hello": {
-        "handler": "s_hello.handler",
-        "events": [],
-        "name": "backend-dev-hello",
-        "package": {},
-        "memory": 1024,
-        "timeout": 6,
-        "runtime": "nodejs12.x",
-        "vpc": {},
-        "versionLogicalId": "HelloLambdaVersionqqTejJNWBj06fOiwSRd25LAkosoXfnhhER3mGuY3NA"
+        "versionLogicalId": "WhoamiLambdaVersiondFEI0PJS7dXCiXgqreDdbljNoBxjHGhvpq64lM"
       }
     },
     "configValidationMode": "warn",
@@ -1264,6 +1190,25 @@
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
       },
+      "stage": "dev",
+      "region": "us-east-1",
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "dynamodb:DescribeTable",
+            "dynamodb:Query",
+            "dynamodb:Scan",
+            "dynamodb:GetItem",
+            "dynamodb:PutItem",
+            "dynamodb:UpdateItem",
+            "dynamodb:DeleteItem"
+          ],
+          "Resource": [
+            "arn:aws:dynamodb:us-east-1:537357708975:table/LL-tripReqs"
+          ]
+        }
+      ],
       "package": {
         "exclude": [
           "node_modules/serverless-enterprise-plugin"
@@ -1273,7 +1218,7 @@
           "serverless_sdk/**"
         ],
         "artifact": "C:\\Users\\Antonio\\Documents\\SP21\\BSS\\git\\backend\\.serverless\\backend.zip",
-        "artifactDirectoryName": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z"
+        "artifactDirectoryName": "serverless/backend/dev/1618935454969-2021-04-20T16:17:34.969Z"
       },
       "plugins": {
         "$ref": "$[\"service\"][\"plugins\"]"
@@ -1289,7 +1234,7 @@
     "artifact": "C:\\Users\\Antonio\\Documents\\SP21\\BSS\\git\\backend\\.serverless\\backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/backend/dev/1618803617870-2021-04-19T03:40:17.870Z",
+    "artifactDirectoryName": "serverless/backend/dev/1618935454969-2021-04-20T16:17:34.969Z",
     "artifact": "backend.zip"
   }
 }
