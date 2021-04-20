@@ -38,6 +38,7 @@ class Home extends React.Component {
         }
 
         console.log(backendURL)
+        console.log(getTrips("Antonio"))
 
         const response = await fetch(backendURL, {
       headers: {
@@ -51,6 +52,7 @@ class Home extends React.Component {
         this.setState({requests: reqs})
         console.log(reqs)
     }
+
 
     render() {
       return (
@@ -117,6 +119,7 @@ class Home extends React.Component {
                 </div> 
                 <button class="button is-warning" onClick={() => addTrip("Puerto Rico", "Antonio")}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
+
             </div>
                      
             
