@@ -105,7 +105,7 @@ const getTrips = (nam) => {
     {
       TableName: "LL-tripReqs",
       KeyConditionExpression: "name = :name",
-      ExpressionAttributeValues: { "name": nam}
+      ExpressionAttributeValues: { "name": nam},
     }
   ).promise().then((response) => response.Items);
 }
@@ -116,8 +116,8 @@ const addTrip = (loc, nam) => {
       TableName: "LL-tripReqs",
       Item: {
         location: loc,
-        name = nam
-      }
+        name = nam,
+      },
     }
   ).promise();
 };
@@ -128,8 +128,8 @@ const deleteTrip = (loc, nam) => {
       TableName: "LL-tripReqs",
       Key: {
         location: loc,
-        name = nam
-      }
+        name = nam,
+      },
     }
   ).promise();
 };
