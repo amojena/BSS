@@ -101,6 +101,7 @@ const checkUser = async (event) => {
 }
 
 const getTrips = (nam) => {
+  console.log("querying")
   return docClient.query(
     {
       TableName: "LL-tripReqs",
@@ -111,6 +112,7 @@ const getTrips = (nam) => {
 }
 
 const addTrip = (loc, nam) => {
+  console.log("Adding")
   return docClient.put(
     {
       TableName: "LL-tripReqs",
