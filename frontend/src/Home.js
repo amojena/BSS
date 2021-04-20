@@ -3,7 +3,7 @@ import './App.css';
 import testImage from './img/bg5.jpg'
 import firebase from 'firebase';
 
-import {getTrips, addTrip, deleteTrip} from '../../backend/api'
+import {addTrip, getTrips} from '../../backend/api'
 
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDZEl07mkjMsShSgrG4tCGiYypL4FFMS50",
@@ -38,7 +38,7 @@ class Home extends React.Component {
         }
 
         console.log(backendURL)
-        console.log(getTrips("Antonio"))
+        console.log(getTrips("Puerto Rico"))
 
         const response = await fetch(backendURL, {
       headers: {

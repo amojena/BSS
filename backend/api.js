@@ -100,24 +100,24 @@ const checkUser = async (event) => {
     return decodedUser
 }
 
-const getTrips = (nam) => {
+function getTrips (loc) {
   console.log("querying")
   return docClient.query(
     {
       TableName: "LL-tripReqs",
-      KeyConditionExpression: "name = :name",
-      ExpressionAttributeValues: { "name": nam},
+      KeyConditionExpression: "Location =: location",
+      ExpressionAttributeValues: {"Location": loc},
     }
   ).promise().then((response) => response.Items);
 }
 
-const addTrip = (loc, nam) => {
+function addTrip(loc, nam) {
   console.log("Adding")
   return docClient.put(
     {
       TableName: "LL-tripReqs",
       Item: {
-        location: loc,
+        Location: loc,
         name: nam,
       },
     }
@@ -129,7 +129,7 @@ const deleteTrip = (loc, nam) => {
     {
       TableName: "LL-tripReqs",
       Key: {
-        location: loc,
+        Location: loc,
         name: nam,
       },
     }
