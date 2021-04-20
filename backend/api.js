@@ -14,49 +14,6 @@ const headers = {
 }
 
 
-const checkUser = async (event) => {
-  const token = event.headers['Authorization']
-    if (!token) {
-      throw new Error('Missing token')
-    }
-    const decodedUser = await firebaseTokenVerifier.validate(token, projectId)
-    return decodedUser
-}
-
-const getTrips = (_name) => {
-  return docClient.query(
-    {
-      TableName: "LL-tripReqs",
-      KeyConditionExpression: "name = :name",
-      ExpressionAttributeValues: { "name": _name}
-    }
-  ).promise().then((response) => response.Items);
-}
-
-const addTrip = (_location, _name) => {
-  return docClient.put(
-    {
-      TableName: "LL-tripReqs",
-      Item: {
-        location: _location,
-        name = _name
-      }
-    }
-  ).promise();
-};
-
-const deleteTrip = (_location, _name) => {
-  return docClient.delete(
-    {
-      TableName: "LL-tripReqs",
-      Key: {
-        location: _location,
-        name = _name
-      }
-    }
-  ).promise();
-};
-
 module.exports.getTravelReqs = async (event) => {
   
   // check first if its an OPTIONS request
@@ -124,12 +81,56 @@ module.exports.getTravelReqs = async (event) => {
 
     // TODO write that data to your dynamodb table
 		
-	// send back a successful response
-	return {
-	  statusCode: 201,
-      headers
-	}
-  }
+	  // send back a successful response
+    return {
+      statusCode: 201,
+        headers
+      } 
+    }
 
+};
+
+
+const checkUser = async (event) => {
+  const token = event.headers['Authorization']
+    if (!token) {
+      throw new Error('Missing token')
+    }
+    const decodedUser = await firebaseTokenVerifier.validate(token, projectId)
+    return decodedUser
+}
+
+const getTrips = (nam) => {
+  return docClient.query(
+    {
+      TableName: "LL-tripReqs",
+      KeyConditionExpression: "name = :name",
+      ExpressionAttributeValues: { "name": nam}
+    }
+  ).promise().then((response) => response.Items);
+}
+
+const addTrip = (loc, nam) => {
+  return docClient.put(
+    {
+      TableName: "LL-tripReqs",
+      Item: {
+        location: loc,
+        name = nam
+      }
+    }
+  ).promise();
+};
+
+const deleteTrip = (loc, nam) => {
+  return docClient.delete(
+    {
+      TableName: "LL-tripReqs",
+      Key: {
+        location: loc,
+        name = nam
+      }
+    }
+  ).promise();
 };
 

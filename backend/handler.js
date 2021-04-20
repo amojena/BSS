@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 module.exports.hello = async (event) => {
   if (event.httpMethod === "GET" && event.path === "/whoami") {
     return {
