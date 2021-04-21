@@ -107,8 +107,8 @@ function getTrips (loc) {
   return docClient.query(
     {
       TableName: "LL-tripReqs",
-      KeyConditionExpression: "Location =: location",
-      ExpressionAttributeValues: {":Location": loc},
+      KeyConditionExpression: "Location = :location",
+      ExpressionAttributeValues: {":location": {S:loc}},
     }
   ).promise().then((response) => response.Items);
 }
