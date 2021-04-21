@@ -58,12 +58,12 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
-        let trip = document.getElementsByClassName("input is-medium")[0].value
-        const tripName = typeof trip !== 'undefined' ? trip : 'Default';
+        let tripName = document.getElementsByClassName("input is-medium")[0].value
+        // const tripName = typeof trip !== 'undefined' ? trip : 'Default';
 
-        if (tripName === 'Default'){
-            return;
-        }
+        // if (tripName === 'Default'){
+        //     return;
+        // }
 
         const response = await fetch(backendURL, {
             method: 'POST',
@@ -159,7 +159,7 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <input class="input is-medium" onChange={} type="text" placeholder="Enter new destination"/>
+                <input class="input is-medium" on type="text" placeholder="Enter new destination"/>
                 <button class="button is-warning" onClick={() => this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
 
