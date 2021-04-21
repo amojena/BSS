@@ -31,26 +31,58 @@ class Home extends React.Component {
         const idToken = await firebase.auth().currentUser?.getIdToken()
         let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
-        console.log(window.location.href)
+        if (window.location.href.includes('localhost')) {
+            backendURL = 'http://localhost:4000/dev/requests'
+        }
+
+        const response = await fetch(backendURL, {
+            headers: {
+                'Authorization': idToken
+            }
+        })
+
+        if (response.status === 401) {
+            return console.log("Unauthorized")
+        }
+
+        const reqs = await response.json()
+        this.setState({requests: reqs})
+        console.log("GET")
+        console.log(reqs)
+    }
+
+    async makeNewTrip(){
+        let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
+
 
         if (window.location.href.includes('localhost')) {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
-        console.log(backendURL)
-        console.log(getTrips("Puerto Rico"))
-
         const response = await fetch(backendURL, {
-      headers: {
-        'Authorization': idToken
-      }
-    })
+            method: 'POST',
+            headers: {
+                'Authorization': idToken
+            },
+            body: {
+                location: "Puerto Rico",
+                name: "Antonio",
+                status: "Pending"
+            }
+        })
 
-    if (response.status === 401) {return console.log("Unauthorized")}
+        if (response.status === 401) {
+            return console.log("Unauthorized")
+        }else if (response.status === 400) {
+            return console.log(response.body.message)
+        }
 
         const reqs = await response.json()
         this.setState({requests: reqs})
+        console.log("POST")
         console.log(reqs)
+
+
     }
 
 
@@ -93,7 +125,7 @@ class Home extends React.Component {
                                     <div class="media-content">
                                     {
                                         this.state.requests && <div>
-                                                    <p class="title is-4">{this.state.requests.location}</p>
+                                                    <p class="title is-4">{this.state.requests.Location}</p>
                                                     <p class="subtitle is-5">{this.state.requests.status}</p>
                                                 </div>                                  
                                     }
@@ -117,8 +149,10 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <button class="button is-warning" onClick={() => addTrip("Puerto Rico", "Antonio")}>+ New Trip</button>
+                <button class="button is-warning" onClick={this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
+
+
 
             </div>
                      

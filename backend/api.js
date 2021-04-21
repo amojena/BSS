@@ -45,11 +45,11 @@ module.exports.getTravelReqs = async (event) => {
     }
     
 
-
+    const trips = await getTrips("Puerto Rico")
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ name: 'Antonio Mojena', location: "Puerto Rico", status: "Pending" })
+      body: JSON.stringify(trips)
     }
 
   }
@@ -80,11 +80,13 @@ module.exports.getTravelReqs = async (event) => {
     const requestBody = JSON.parse(event.body);
 
     // TODO write that data to your dynamodb table
+    data = await addTrip(requestBody.location, requestBody.name)
 		
 	  // send back a successful response
     return {
       statusCode: 201,
-        headers
+        headers,
+        body: data
       } 
     }
 
@@ -119,6 +121,7 @@ function addTrip(loc, nam) {
       Item: {
         Location: loc,
         name: nam,
+        status: "Pending"
       },
     }
   ).promise();
@@ -131,6 +134,7 @@ const deleteTrip = (loc, nam) => {
       Key: {
         Location: loc,
         name: nam,
+        status: "Pending"
       },
     }
   ).promise();
