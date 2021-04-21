@@ -124,14 +124,14 @@ class Home extends React.Component {
                                     <div class="media-content">
                                     {
                                         this.state.requests && <div>
-                                                    <p class="title is-4">{this.state.requests.Location}</p>
-                                                    <p class="subtitle is-5">{this.state.requests.status}</p>
+                                                    <p class="title is-4">{this.state.requests.location_name}</p>
+                                                    <p class="subtitle is-5">{this.state.requests.local_status}</p>
                                                 </div>                                  
                                     }
                                     </div>
 
                                     <div class="content">
-                                       Traveler: {this.state.requests && <p> {this.state.requests.name}</p>}
+                                       Traveler: {this.state.requests && <p> {this.state.requests.user_name}</p>}
                                     </div>
 
                             
@@ -148,7 +148,7 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <button class="button is-warning" onClick={this.makeNewTrip()}>+ New Trip</button>
+                <button class="button is-warning" onClick={() => this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
 
 
