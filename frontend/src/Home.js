@@ -63,11 +63,11 @@ class Home extends React.Component {
             headers: {
                 'Authorization': idToken
             },
-            body: {
+            body: JSON.stringify({
                 location: "Puerto Rico",
                 name: "Antonio",
                 status: "Pending"
-            }
+            })
         })
 
         if (response.status === 401) {
