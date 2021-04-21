@@ -69,6 +69,8 @@ class Home extends React.Component {
                 status: "Pending"
             })
         })
+        
+        console.log("POST")
 
         if (response.status === 401) {
             return console.log("Unauthorized")
@@ -78,7 +80,6 @@ class Home extends React.Component {
 
         const reqs = await response.json()
         this.setState({requests: reqs})
-        console.log("POST")
         console.log(reqs)
 
 
@@ -124,14 +125,14 @@ class Home extends React.Component {
                                     <div class="media-content">
                                     {
                                         this.state.requests && <div>
-                                                    <p class="title is-4">{this.state.requests.location_name}</p>
-                                                    <p class="subtitle is-5">{this.state.requests.local_status}</p>
+                                                    <p class="title is-4">{this.state.requests[0].location_name}</p>
+                                                    <p class="subtitle is-5">{this.state.requests[0].local_status}</p>
                                                 </div>                                  
                                     }
                                     </div>
 
                                     <div class="content">
-                                       Traveler: {this.state.requests && <p> {this.state.requests.user_name}</p>}
+                                       Traveler: {this.state.requests && <p> {this.state.requests[0].user_name}</p>}
                                     </div>
 
                             
