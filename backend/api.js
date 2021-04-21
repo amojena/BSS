@@ -107,8 +107,8 @@ function getTrips (loc) {
   return docClient.query(
     {
       TableName: "LL-tripReqs",
-      KeyConditionExpression: "Location = :location",
-      ExpressionAttributeValues: {":location": {"S":loc}},
+      KeyConditionExpression: "location_name = :loc_name",
+      ExpressionAttributeValues: {":loc_name": loc},
     }
   ).promise().then((response) => response.Items);
 }
@@ -119,9 +119,9 @@ function addTrip(loc, nam) {
     {
       TableName: "LL-tripReqs",
       Item: {
-        Location: loc,
-        name: nam,
-        status: "Pending"
+        location_name: loc,
+        user_name: nam,
+        local_status: "Pending"
       },
     }
   ).promise();
@@ -132,9 +132,9 @@ const deleteTrip = (loc, nam) => {
     {
       TableName: "LL-tripReqs",
       Key: {
-        Location: loc,
-        name: nam,
-        status: "Pending"
+        location_name: loc,
+        user_name: nam,
+        local_status: "Pending"
       },
     }
   ).promise();
