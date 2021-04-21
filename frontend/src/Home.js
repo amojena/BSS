@@ -58,7 +58,7 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
-        let tripName = document.getElementsByClassName("input is-medium")[0].value
+        let tripNam = document.getElementsByClassName("input is-medium")[0].value
         // const tripName = typeof trip !== 'undefined' ? trip : 'Default';
 
         // if (tripName === 'Default'){
@@ -118,7 +118,6 @@ class Home extends React.Component {
 
                 <div class="columns">
                     <div class="column is-one-half">
-                        <li>
                         <div class="card">
                             <div class="card-content">
                                 <div class="media">
@@ -133,14 +132,14 @@ class Home extends React.Component {
                                     <div class="media-content">
                                     {
                                         this.state.requests && <div>
-                                                    <p class="title is-4">{this.state.requests.location_name}</p>
-                                                    <p class="subtitle is-5">{this.state.requests.local_status}</p>
+                                                    <p class="title is-4">{this.state.requests[0].location_name}</p>
+                                                    <p class="subtitle is-5">{this.state.requests[0].local_status}</p>
                                                 </div>                                  
                                     }
                                     </div>
 
                                     <div class="content">
-                                       Traveler: {this.state.requests && <p> {this.state.requests.user_name}</p>}
+                                       Traveler: {this.state.requests && <p> {this.state.requests[0].user_name}</p>}
                                     </div>
 
                             
@@ -153,7 +152,6 @@ class Home extends React.Component {
                             
                         </div>
 
-                        </li>
                     </div>
                 
                     <div class="column is one-half"></div>
