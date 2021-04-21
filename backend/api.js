@@ -89,7 +89,7 @@ module.exports.getTravelReqs = async (event) => {
         body: JSON.stringify(data)
       } 
     }
-
+    
 };
 
 
