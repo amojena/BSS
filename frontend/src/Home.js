@@ -49,7 +49,7 @@ class Home extends React.Component {
         console.log(reqs)
     }
 
-    async makeNewTrip(trip){
+    async makeNewTrip(){
         const idToken = await firebase.auth().currentUser?.getIdToken()
         let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
@@ -58,6 +58,7 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
+        let trip = document.getElementsByClassName("input is-medium")[0].value
         const tripName = typeof trip !== 'undefined' ? trip : 'Default';
 
         if (tripName === 'Default'){
@@ -159,7 +160,7 @@ class Home extends React.Component {
                 
                 </div> 
                 <input class="input is-medium" onChange={} type="text" placeholder="Enter new destination"/>
-                <button class="button is-warning" onClick={() => this.makeNewTrip(document.getElementsByClassName("input is-medium")[0].value)}>+ New Trip</button>
+                <button class="button is-warning" onClick={() => this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
 
 
