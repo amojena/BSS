@@ -68,7 +68,7 @@ class Home extends React.Component {
                 name: "Antonio",
                 status: "Pending"
             })
-        })
+        }).then(response => response.json())
         
         console.log("POST")
 

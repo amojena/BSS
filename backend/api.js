@@ -84,9 +84,9 @@ module.exports.getTravelReqs = async (event) => {
 		
 	  // send back a successful response
     return {
-      statusCode: 201,
+        statusCode: 201,
         headers,
-        body: data
+        body: JSON.stringify(data)
       } 
     }
 
