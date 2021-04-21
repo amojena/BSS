@@ -108,7 +108,7 @@ function getTrips (loc) {
     {
       TableName: "LL-tripReqs",
       KeyConditionExpression: "Location =: location",
-      ExpressionAttributeValues: {"Location": loc},
+      ExpressionAttributeValues: {":Location": loc},
     }
   ).promise().then((response) => response.Items);
 }
