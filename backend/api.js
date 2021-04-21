@@ -124,7 +124,7 @@ function addTrip(loc, nam) {
         local_status: "Pending"
       },
     }
-  ).promise().then((response) => response.Items);
+  ).promise();
 };
 
 const deleteTrip = (loc, nam) => {
