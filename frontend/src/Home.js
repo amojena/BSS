@@ -50,6 +50,7 @@ class Home extends React.Component {
     }
 
     async makeNewTrip(){
+        const idToken = await firebase.auth().currentUser?.getIdToken()
         let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
 
