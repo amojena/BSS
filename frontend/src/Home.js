@@ -75,7 +75,7 @@ class Home extends React.Component {
                 name: "Antonio M",
                 status: "Pending"
             })
-        }).then(response => response.json())
+        })
         
         console.log("POST")
 
@@ -85,9 +85,9 @@ class Home extends React.Component {
             return console.log(response.body.message)
         }
 
-        // const reqs = await response.json()
+        const reqs = await response.json()
         // this.setState({requests: reqs})
-        console.log(response)
+        console.log(reqs)
 
 
     }
