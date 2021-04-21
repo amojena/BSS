@@ -152,7 +152,7 @@ class Home extends React.Component {
                     <div class="column is one-half"></div>
                 
                 </div> 
-                <input class="input is-medium" onChange={() => this.makeNewTrip(document.getElementsByClassName("input is-medium"))} type="text" placeholder="Enter new destination"/>
+                <input class="input is-medium" onChange={() => this.makeNewTrip(document.getElementsByClassName("input is-medium")[0].value)} type="text" placeholder="Enter new destination"/>
                 <button class="button is-warning" onClick={() => this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
 
