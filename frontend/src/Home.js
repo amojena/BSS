@@ -49,7 +49,7 @@ class Home extends React.Component {
         console.log(reqs)
     }
 
-    async makeNewTrip(){
+    async makeNewTrip(trip){
         const idToken = await firebase.auth().currentUser?.getIdToken()
         let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
@@ -58,13 +58,15 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
+        const tripName = typeof trip !== 'undefined' ? trip : 'Default';
+
         const response = await fetch(backendURL, {
             method: 'POST',
             headers: {
                 'Authorization': idToken
             },
             body: JSON.stringify({
-                location: "Puerto Rico",
+                location: tripName,
                 name: "Antonio M",
                 status: "Pending"
             })
