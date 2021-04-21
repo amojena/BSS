@@ -219,7 +219,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618977307548-2021-04-21T03:55:07.548Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618977564919-2021-04-21T03:59:24.919Z/backend.zip"
         },
         "Handler": "s_requests.handler",
         "Runtime": "nodejs12.x",
@@ -244,7 +244,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618977307548-2021-04-21T03:55:07.548Z/backend.zip"
+          "S3Key": "serverless/backend/dev/1618977564919-2021-04-21T03:59:24.919Z/backend.zip"
         },
         "Handler": "s_whoami.handler",
         "Runtime": "nodejs12.x",
@@ -262,24 +262,24 @@
         "WhoamiLogGroup"
       ]
     },
-    "RequestsLambdaVersionaVCZzNDQy1iaKDCVkeKJ2eTECAXVGDcJHVI2cx2IU": {
+    "RequestsLambdaVersionviOBosoDkSSIxYp9dkhQ8tLGAsgyfsL76biM3WzMk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "RequestsLambdaFunction"
         },
-        "CodeSha256": "JCKyljH9IqyXyvdpWmZBb4UgSSvgYvWuCC7f1uZaVYc="
+        "CodeSha256": "cFY+FebXI5H0fWwp/nWWeyoWP6/TzeRfFr4buDWelvE="
       }
     },
-    "WhoamiLambdaVersionyhyMbc9MVZDBoJRu220noy9YG7XJgFZVI4MmpKquGo": {
+    "WhoamiLambdaVersionOl0eJVyr0GfnBy0bALMjqqHzsuGMzOSiFDETARjvTk": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "WhoamiLambdaFunction"
         },
-        "CodeSha256": "JCKyljH9IqyXyvdpWmZBb4UgSSvgYvWuCC7f1uZaVYc="
+        "CodeSha256": "cFY+FebXI5H0fWwp/nWWeyoWP6/TzeRfFr4buDWelvE="
       }
     },
     "ApiGatewayRestApi": {
@@ -637,7 +637,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1618977280280": {
+    "ApiGatewayDeployment1618977540319": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -838,7 +838,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/backend/dev/1618977307548-2021-04-21T03:55:07.548Z/custom-resources.zip"
+          "S3Key": "serverless/backend/dev/1618977564919-2021-04-21T03:59:24.919Z/custom-resources.zip"
         },
         "FunctionName": "backend-dev-custom-resource-apigw-cw-role",
         "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -904,13 +904,13 @@
     "RequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "RequestsLambdaVersionaVCZzNDQy1iaKDCVkeKJ2eTECAXVGDcJHVI2cx2IU"
+        "Ref": "RequestsLambdaVersionviOBosoDkSSIxYp9dkhQ8tLGAsgyfsL76biM3WzMk"
       }
     },
     "WhoamiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "WhoamiLambdaVersionyhyMbc9MVZDBoJRu220noy9YG7XJgFZVI4MmpKquGo"
+        "Ref": "WhoamiLambdaVersionOl0eJVyr0GfnBy0bALMjqqHzsuGMzOSiFDETARjvTk"
       }
     },
     "ServiceEndpoint": {
