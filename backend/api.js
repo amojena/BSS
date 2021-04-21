@@ -80,7 +80,7 @@ module.exports.getTravelReqs = async (event) => {
     const requestBody = JSON.parse(event.body);
 
     // TODO write that data to your dynamodb table
-    data = await addTrip(requestBody.location, requestBody.name)
+    const data = await addTrip(requestBody.location, requestBody.name)
 		
 	  // send back a successful response
     return {
