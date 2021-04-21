@@ -87,7 +87,7 @@ class Home extends React.Component {
 
         // const reqs = await response.json()
         // this.setState({requests: reqs})
-        console.log(response.statusCode)
+        console.log(response.json())
 
 
     }
