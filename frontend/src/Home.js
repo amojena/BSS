@@ -58,7 +58,7 @@ class Home extends React.Component {
             backendURL = 'http://localhost:4000/dev/requests'
         }
 
-        let tripNam = document.getElementsByClassName("input is-medium")[0].value
+        let tripName = document.getElementsByClassName("input is-medium")[0].value
         // const tripName = typeof trip !== 'undefined' ? trip : 'Default';
 
         // if (tripName === 'Default'){
