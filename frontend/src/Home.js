@@ -109,7 +109,7 @@ class Home extends React.Component {
         }
 
         const reqs = await response.json()
-        this.setState({requests: reqs})
+        this.setState({requests: reqs.Items})
         console.log("GET ALL")
         console.log(this.state.requests)
     }
