@@ -108,10 +108,10 @@ class Home extends React.Component {
             return console.log("Unauthorized")
         }
 
-        // const reqs = await response.json()
-        this.setState({requests: response.Items})
+        const reqs = await response.json()
+        this.setState({requests: reqs})
         console.log("GET ALL")
-        console.log(requests)
+        // console.log(requests)
     }
 
 
