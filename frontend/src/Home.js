@@ -26,27 +26,27 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        const idToken = await firebase.auth().currentUser?.getIdToken()
-        let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
+        // const idToken = await firebase.auth().currentUser?.getIdToken()
+        // let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests"
 
-        if (window.location.href.includes('localhost')) {
-            backendURL = 'http://localhost:4000/dev/requests'
-        }
+        // if (window.location.href.includes('localhost')) {
+        //     backendURL = 'http://localhost:4000/dev/requests'
+        // }
 
-        const response = await fetch(backendURL, {
-            headers: {
-                'Authorization': idToken
-            }
-        })
+        // const response = await fetch(backendURL, {
+        //     headers: {
+        //         'Authorization': idToken
+        //     }
+        // })
 
-        if (response.status === 401) {
-            return console.log("Unauthorized")
-        }
+        // if (response.status === 401) {
+        //     return console.log("Unauthorized")
+        // }
 
-        const reqs = await response.json()
-        this.setState({requests: reqs})
-        console.log("GET")
-        console.log(reqs)
+        // const reqs = await response.json()
+        // this.setState({requests: reqs})
+        // console.log("GET")
+        // console.log(reqs)
 
         this.fetchAllTrips()
     }
@@ -108,10 +108,10 @@ class Home extends React.Component {
             return console.log("Unauthorized")
         }
 
-        const reqs = await response.json()
-        this.setState({requests: reqs})
+        // const reqs = await response.json()
+        this.setState({requests: response.Items})
         console.log("GET ALL")
-        console.log(reqs)
+        console.log(requests)
     }
 
 
