@@ -22,7 +22,7 @@ import firebase from 'firebase';
 class Home extends React.Component {
 
     state = {
-        requests: []
+        requests: null
     }
 
     async componentDidMount() {
@@ -111,7 +111,7 @@ class Home extends React.Component {
         const reqs = await response.json()
         this.setState({requests: reqs})
         console.log("GET ALL")
-        // console.log(requests)
+        console.log(requests)
     }
 
 
@@ -140,9 +140,8 @@ class Home extends React.Component {
 
                 <div class="columns">
                     <div class="column is-one-half">
-                                
                         <ul>
-                            {this.state.requests.map(request=> {
+                            {this.state.requests && this.state.requests.map(request=> {
                                 return <li>Location: {request.location_name}</li>
                             })}
                         </ul>
