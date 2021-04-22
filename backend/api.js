@@ -88,8 +88,40 @@ module.exports.getTravelReqs = async (event) => {
         headers,
         body: requestBody
       } 
+  }
+
+
+  if (event.httpMethod === "GET" && event.path === "/requests/all") {
+
+    const token = event.headers['Authorization']
+
+    // no authorization token provided, return error code
+    if (!token) {
+      console.log("No token")
+      return {statusCode: 401, headers}
+    }
+
+    //validate token from request
+    try{
+      const decoded = await firebaseTokenVerifier.validate(token,projectId)
+    } catch(err) {
+      // invalid token
+      console.error(err)
+      return {statusCode: 401, headers}
     }
     
+
+    const trips = await getAllTrips()
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify(trips)
+    }
+
+  }
+
+
+
 };
 
 
@@ -100,6 +132,12 @@ const checkUser = async (event) => {
     }
     const decodedUser = await firebaseTokenVerifier.validate(token, projectId)
     return decodedUser
+}
+
+function getAllTrips(){
+  return docClient.scan(
+    {TableName: "LL-tripReqs"}
+  ).promise().then((response) => response.Items);
 }
 
 function getTrips (loc) {

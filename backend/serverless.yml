@@ -91,6 +91,11 @@ functions:
           path: /requests
           method: ANY
           cors: true
+      - http:
+          path: /requests/all
+          method: ANY
+          cors: true
+
 
   whoami:
     handler: handler.hello

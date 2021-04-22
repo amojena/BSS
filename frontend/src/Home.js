@@ -22,7 +22,7 @@ import firebase from 'firebase';
 class Home extends React.Component {
 
     state = {
-        requests: null
+        requests: []
     }
 
     async componentDidMount() {
@@ -47,6 +47,8 @@ class Home extends React.Component {
         this.setState({requests: reqs})
         console.log("GET")
         console.log(reqs)
+
+        this.fetchAllTrips()
     }
 
     async makeNewTrip(){
@@ -85,11 +87,32 @@ class Home extends React.Component {
             return console.log(response.body.message)
         }
 
-        // const reqs = await response.json()
+        this.fetchAllTrips()
+    }
+
+    async fetchAllTrips(){
+        const idToken = await firebase.auth().currentUser?.getIdToken()
+        let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests/all"
+
+        if (window.location.href.includes('localhost')) {
+            backendURL = 'http://localhost:4000/dev/requests'
+        }
+
+        const response = await fetch(backendURL, {
+            method: 'GET',
+            headers: {
+                'Authorization': idToken
+            }
+        })
+
+        if (response.status === 401) {
+            return console.log("Unauthorized")
+        }
+
+        const reqs = await response.json()
         // this.setState({requests: reqs})
-        console.log(response)
-
-
+        console.log("GET ALL")
+        console.log(reqs)
     }
 
 
@@ -118,45 +141,25 @@ class Home extends React.Component {
 
                 <div class="columns">
                     <div class="column is-one-half">
-                        <div class="card">
-                            <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-128x128">
-                                        <img src={testImage} alt="Placeholder"/>
-                                        </figure>
-                                    </div>
-                                    
-                                </div>
-
-                                    <div class="media-content">
-                                    {
-                                        this.state.requests && <div>
-                                                    <p class="title is-4">{this.state.requests[0].location_name}</p>
-                                                    <p class="subtitle is-5">{this.state.requests[0].local_status}</p>
-                                                </div>                                  
-                                    }
-                                    </div>
-
-                                    <div class="content">
-                                       Traveler: {this.state.requests && <p> {this.state.requests[0].user_name}</p>}
-                                    </div>
-
-                            
-                            </div>
-
-                            <footer class="card-footer">
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
-                            </footer>
-                            
-                        </div>
-
+                                
+                        <ul>
+                            {this.state.requests.map(request=> {
+                                return <li>Location: {request.location_name}</li>
+                            })}
+                        </ul>
+                        
+                                
+                                
+                        
                     </div>
                 
                     <div class="column is one-half"></div>
                 
                 </div> 
+
+                <li>
+
+                </li>
                 <input class="input is-medium" on type="text" placeholder="Enter new destination"/>
                 <button class="button is-warning" onClick={() => this.makeNewTrip()}>+ New Trip</button>
                 <button class="button is-warning" onClick={() => firebase.auth().signOut()}>Sign Out</button>
