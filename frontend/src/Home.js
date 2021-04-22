@@ -147,8 +147,6 @@ class Home extends React.Component {
                         </ul>
                         
                                 
-                                
-                        
                     </div>
                 
                     <div class="column is one-half"></div>
