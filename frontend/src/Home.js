@@ -61,7 +61,7 @@ class Home extends React.Component {
         }
 
         let tripName = document.getElementsByClassName("input is-medium")[0].value
-        
+
         const response = await fetch(backendURL, {
             method: 'POST',
             headers: {
