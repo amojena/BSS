@@ -135,8 +135,10 @@ const checkUser = async (event) => {
 }
 
 function getAllTrips(){
-  return docClient.scan(
-    {TableName: "LL-tripReqs"}
+  return docClient.query(
+    {
+      TableName: "LL-tripReqs"
+    }
   ).promise().then((response) => response.Items);
 }
 

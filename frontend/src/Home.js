@@ -95,11 +95,10 @@ class Home extends React.Component {
         let backendURL = "https://p21qvrgd2i.execute-api.us-east-1.amazonaws.com/dev/requests/all"
 
         if (window.location.href.includes('localhost')) {
-            backendURL = 'http://localhost:4000/dev/requests'
+            backendURL = 'http://localhost:4000/dev/requests/all'
         }
 
         const response = await fetch(backendURL, {
-            method: 'GET',
             headers: {
                 'Authorization': idToken
             }
@@ -110,7 +109,7 @@ class Home extends React.Component {
         }
 
         const reqs = await response.json()
-        // this.setState({requests: reqs})
+        this.setState({requests: reqs})
         console.log("GET ALL")
         console.log(reqs)
     }
