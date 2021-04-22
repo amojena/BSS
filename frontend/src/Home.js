@@ -111,7 +111,7 @@ class Home extends React.Component {
         const reqs = await response.json()
         this.setState({requests: reqs})
         console.log("GET ALL")
-        console.log(requests)
+        console.log(this.state.requests)
     }
 
 
